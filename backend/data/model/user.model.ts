@@ -5,6 +5,8 @@ export default class User extends Model {
     name: string;
     userName: string;
     wishes: string[];
+    personalTraits: string[]; //qualidades,defeitos,qualidade que gostaria de ter
+    checklistDay: string;
     bio: string;
     img: any[];
 
