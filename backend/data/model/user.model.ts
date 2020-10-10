@@ -7,8 +7,6 @@ export default class User extends Model {
     wishes: string[];
     bio: string;
     img: any[];
-    connections: string[];
-    disconnect: string[];
 
     constructor() {
         super();
@@ -31,13 +29,5 @@ export default class User extends Model {
 
     setImg(img){
         this.img = img;
-    }
-
-    setConnections(connections) {
-        this.connections = connections;
-    }
-
-    setDisconnect(disconnect){
-        this.disconnect = disconnect;
     }
 }
