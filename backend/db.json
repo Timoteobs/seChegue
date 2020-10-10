@@ -1,19 +1,102 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Gustavo",
-      "idade": "25"
+      "user": {
+        "id": 1,
+        "name": "Emerson Gabriel",
+        "userName": "EmersonGS",
+        "wishes": {
+          "id": 1,
+          "description": "Empinar pipa e jogar bola"
+        },
+        "bio": "Analista atualmente na STT",
+        "img": ""
+      },
+      "id": 4
     },
     {
-      "id": 2,
-      "name": "Emerson",
-      "idade": "24"
+      "user": {
+        "id": 1,
+        "name": "Gustavo Gusmão",
+        "userName": "GustavoGus",
+        "wishes": {
+          "id": 1,
+          "description": "Fundar a SSTEC"
+        },
+        "bio": "Analista atualmente na STT",
+        "img": "",
+        "connections": {
+          "id": 1,
+          "userName": "EmersonGS"
+        },
+        "disconnect": ""
+      },
+      "id": 5
     },
     {
-      "name": "Micaele",
-      "Idade": "24",
-      "id": 3
+      "user": {
+        "id": 2,
+        "name": "Gustavo Gusmão",
+        "userName": "GustavoGus",
+        "wishes": {
+          "id": 1,
+          "description": "Fundar a SSTEC"
+        },
+        "bio": "Analista atualmente na STT",
+        "img": "",
+        "connections": {
+          "id": 1,
+          "userName": "EmersonGS"
+        },
+        "disconnect": ""
+      },
+      "id": 6
+    },
+    {
+      "user": {
+        "name": "Micaelle Marilia",
+        "userName": "Mica",
+        "wishes": {
+          "id": 1,
+          "description": "Dev girls"
+        },
+        "bio": "Desenvolvedora e blogueira",
+        "img": "",
+        "connections": {
+          "id": 2,
+          "userName": "GustavoGus"
+        },
+        "disconnect": {
+          "id": 1,
+          "userName": "EmersonGS"
+        }
+      },
+      "id": 7
+    }
+  ],
+  "rooms": [
+    {
+      "rooms": {
+        "name": "Matemática",
+        "type": "Geometria",
+        "members": [
+          {
+            "idUser": 4
+          },
+          {
+            "idUser": 5
+          }
+        ],
+        "publications": {
+          "idUser": 4,
+          "description": "Sábado tem aulão de geometria"
+        },
+        "comments": {
+          "idUser": 5,
+          "description": "show, estarei lá"
+        }
+      },
+      "id": 1
     }
   ]
 }
