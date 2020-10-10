@@ -2,44 +2,22 @@
   "users": [
     {
       "user": {
-        "id": 1,
-        "name": "Emerson Gabriel",
-        "userName": "EmersonGS",
-        "wishes": {
-          "id": 1,
-          "description": "Empinar pipa e jogar bola"
-        },
-        "bio": "Analista atualmente na STT",
-        "img": ""
-      },
-      "id": 4
-    },
-    {
-      "user": {
-        "id": 2,
-        "name": "Gustavo Gusmão",
-        "userName": "GustavoGus",
-        "wishes": {
-          "id": 1,
-          "description": "Fundar a SSTEC"
-        },
-        "bio": "Analista atualmente na STT",
-        "img": ""
-      },
-      "id": 6
-    },
-    {
-      "user": {
         "name": "Micaelle Marilia",
         "userName": "Mica",
         "wishes": {
           "id": 1,
-          "description": "Dev girls"
+          "description": "Quero ser uma grande dev"
         },
+        "personalTraits": {
+          "quality": "Aprendo rápido",
+          "defect": "Não sei muito de geometria",
+          "desiredQuality": "Aprender mais sobre geometria"
+        },
+        "checklistDay": "Fui ao trabalho durante o dia, estudei 2 horas de geometria",
         "bio": "Desenvolvedora e blogueira",
         "img": ""
       },
-      "id": 7
+      "id": 1
     }
   ],
   "rooms": [

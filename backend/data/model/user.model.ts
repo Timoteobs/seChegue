@@ -3,10 +3,12 @@ export default class User {
     name: string;
     userName: string;
     wishes: string[];
+    personalTraits: string[]; //qualidades,defeitos,qualidade que gostaria de ter
+    checklistDay: string;
     bio: string;
     img: any[];
 
-    constructor() {}
+    constructor() { }
     setName(name) {
         this.name = name;
     }
@@ -23,7 +25,7 @@ export default class User {
         this.bio = bio;
     }
 
-    setImg(img){
+    setImg(img) {
         this.img = img;
     }
 }
