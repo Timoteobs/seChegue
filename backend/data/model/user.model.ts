@@ -1,4 +1,6 @@
-export default class User {
+import { Model } from "sequelize/types";
+
+export default class User extends Model {
     id!: number;
     name: string;
     userName: string;
@@ -8,7 +10,15 @@ export default class User {
     bio: string;
     img: any[];
 
-    constructor() { }
+    constructor() {
+        super();
+    }
+
+    ToModify() {
+        return this.toJSON();
+    }
+
+
     setName(name) {
         this.name = name;
     }
