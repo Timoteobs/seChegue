@@ -11,6 +11,12 @@ export default class User extends Model {
     constructor() {
         super();
     }
+
+    ToModify() {
+        return this.toJSON();
+    }
+
+
     setName(name) {
         this.name = name;
     }
@@ -27,7 +33,7 @@ export default class User extends Model {
         this.bio = bio;
     }
 
-    setImg(img){
+    setImg(img) {
         this.img = img;
     }
 }
