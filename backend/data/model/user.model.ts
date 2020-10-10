@@ -5,8 +5,6 @@ export default class User {
     wishes: string[];
     bio: string;
     img: any[];
-    connections: string[];
-    disconnect: string[];
 
     constructor() {}
     setName(name) {
@@ -27,13 +25,5 @@ export default class User {
 
     setImg(img){
         this.img = img;
-    }
-
-    setConnections(connections) {
-        this.connections = connections;
-    }
-
-    setDisconnect(disconnect){
-        this.disconnect = disconnect;
     }
 }

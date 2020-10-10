@@ -16,25 +16,6 @@
     },
     {
       "user": {
-        "id": 1,
-        "name": "Gustavo Gusmão",
-        "userName": "GustavoGus",
-        "wishes": {
-          "id": 1,
-          "description": "Fundar a SSTEC"
-        },
-        "bio": "Analista atualmente na STT",
-        "img": "",
-        "connections": {
-          "id": 1,
-          "userName": "EmersonGS"
-        },
-        "disconnect": ""
-      },
-      "id": 5
-    },
-    {
-      "user": {
         "id": 2,
         "name": "Gustavo Gusmão",
         "userName": "GustavoGus",
@@ -43,12 +24,7 @@
           "description": "Fundar a SSTEC"
         },
         "bio": "Analista atualmente na STT",
-        "img": "",
-        "connections": {
-          "id": 1,
-          "userName": "EmersonGS"
-        },
-        "disconnect": ""
+        "img": ""
       },
       "id": 6
     },
@@ -61,15 +37,7 @@
           "description": "Dev girls"
         },
         "bio": "Desenvolvedora e blogueira",
-        "img": "",
-        "connections": {
-          "id": 2,
-          "userName": "GustavoGus"
-        },
-        "disconnect": {
-          "id": 1,
-          "userName": "EmersonGS"
-        }
+        "img": ""
       },
       "id": 7
     }
@@ -95,6 +63,30 @@
           "idUser": 5,
           "description": "show, estarei lá"
         }
+      },
+      "id": 1
+    }
+  ],
+  "connectionList": [
+    {
+      "connectionList": {
+        "id": 5,
+        "connection": [
+          {
+            "id": 4,
+            "userName": "Emersongs"
+          },
+          {
+            "id": 6,
+            "userName": "GustavoGus"
+          }
+        ],
+        "disconnect": [
+          {
+            "id": 7,
+            "userName": "Mica"
+          }
+        ]
       },
       "id": 1
     }
