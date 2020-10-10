@@ -3,6 +3,7 @@ import TYPES from "../types";
 import { IUserService } from "../interfaces/IServices/userServices.interface";
 import { IUserRepository } from "../interfaces/IRepositories/userRepository.interface";
 import  User  from "../model/user.model";
+import Attributes from "../attributes";
 
 @injectable()
 export class UserService implements IUserService {
@@ -10,18 +11,41 @@ export class UserService implements IUserService {
   constructor(
     @inject(TYPES.IUserRepository) private repository: IUserRepository
   ) {}
-  getByEmail(_email: string): Promise<User> {
-    throw new Error("Method not implemented.");
+
+  getByEmail(email: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.repository.getByEmail(email)
+        .then(async (result: User) => {
+          const _result: any = result.ToModify();
+          resolve(_result);
+        }).catch(async (error: any) =>
+          reject(error));
+    });
   }
+
   getById(_id: number): Promise<User> {
     throw new Error("Method not implemented.");
   }
   toList(): Promise<User[]> {
     throw new Error("Method not implemented.");
   }
+
   save(user: User): Promise<any> {
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, reject) => {
+      this.repository.getByEmail(user.email)
+        .then(async (found: User) => {
+          if (!Attributes.IsValid(found)) {
+            this.repository.save(user)
+              .then(result => resolve(result))
+              .catch(async (error: any) =>
+                reject(error));
+          } else {
+            reject(undefined);
+          }
+        });
+    });
   }
+
   update(user: User): Promise<any> {
     throw new Error("Method not implemented.");
   }

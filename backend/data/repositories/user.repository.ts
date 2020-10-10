@@ -24,17 +24,42 @@ export class UserRepository implements IUserRepository {
   }
  
   getByEmail(_email: string): Promise<User> {
-    throw new Error('Method not implemented.');
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {
+          email: {
+            [Op.eq]: _email
+          }
+        }
+      }).then((result: User) => {
+        resolve(result);
+      }).catch(error => {
+        reject(error);
+      });
+    });
   }
+
   getById(_id: number): Promise<User> {
     throw new Error('Method not implemented.');
   }
   toList(): Promise<User[]> {
     throw new Error('Method not implemented.');
   }
+
   save(user: User): Promise<any> {
-    throw new Error('Method not implemented.');
+    return new Promise(async (resolve, reject) => {
+      const _transaction = await User.sequelize.transaction();
+      User.create(user, { transaction: _transaction })
+        .then(async result => {
+          await _transaction.commit();
+          resolve(result);
+        }).catch(async error => {
+          await _transaction.rollback();
+          reject(error);
+        });
+    });
   }
+
   update(user: User): Promise<any> {
     throw new Error('Method not implemented.');
   }

@@ -4,6 +4,7 @@ export default class User extends Model {
     id!: number;
     name: string;
     userName: string;
+    email: string;
     wishes: string[];
     personalTraits: string[]; //qualidades,defeitos,qualidade que gostaria de ter
     checklistDay: string;
@@ -25,6 +26,10 @@ export default class User extends Model {
 
     setUserName(userName) {
         this.userName = userName;
+    }
+
+    setEmail(email) {
+        this.email = email;
     }
 
     setWishes(wishes) {
