@@ -21,6 +21,14 @@ export default class User {
         this.wishes = wishes;
     }
 
+    setPersonalTraits(personalTraits) {
+        this.personalTraits = personalTraits;
+    }
+
+    setChecklistDay(checklistDay) {
+        this.checklistDay = checklistDay;
+    }
+
     setBio(bio) {
         this.bio = bio;
     }
