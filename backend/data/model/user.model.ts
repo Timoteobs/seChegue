@@ -1,4 +1,6 @@
-export default class User {
+import { Model } from "sequelize/types";
+
+export default class User extends Model {
     id!: number;
     name: string;
     userName: string;
@@ -8,7 +10,9 @@ export default class User {
     connections: string[];
     disconnect: string[];
 
-    constructor() {}
+    constructor() {
+        super();
+    }
     setName(name) {
         this.name = name;
     }
