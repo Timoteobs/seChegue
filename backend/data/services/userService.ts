@@ -54,6 +54,7 @@ export class UserService implements IUserService {
   }
 
   getByName(name: string): Promise<User[]> {
+    console.log(name)
     return new Promise((resolve, reject) => {
       this.repository.getByName(name)
         .then(async (result: User[]) => {
