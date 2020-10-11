@@ -1,10 +1,12 @@
 import { Op } from 'sequelize';
 import { IUserRepository } from '../interfaces/IRepositories/userRepository.interface';
 import User from '../model/user.model';
+import { injectable } from "inversify";
 
 export class UserRepository implements IUserRepository {
-  
+
   getByName(name: string): Promise<User[]> {
+    console.log(name)
     return new Promise((resolve, reject) => {
       User.findAll({
         where: {
@@ -12,18 +14,18 @@ export class UserRepository implements IUserRepository {
             [Op.like]: `${name}%`
           },
         }
-    })
-      .then(result => {
-        resolve(result);
-      }
-      )
-      .catch(error => {
-        reject(error);
-      });
+      })
+        .then(result => {
+          resolve(result);
+        }
+        )
+        .catch(error => {
+          reject(error);
+        });
     });
   }
- 
-  getByEmail(_email: string): Promise<User> {
+
+  getByEmail(_email: string): Promise<any> {
     return new Promise((resolve, reject) => {
       User.findOne({
         where: {
@@ -31,11 +33,12 @@ export class UserRepository implements IUserRepository {
             [Op.eq]: _email
           }
         }
-      }).then((result: User) => {
-        resolve(result);
-      }).catch(error => {
-        reject(error);
-      });
+      })
+        .then((result: User | null) => {
+          resolve(result);
+        }).catch(error => {
+          reject(error);
+        });
     });
   }
 
@@ -48,20 +51,31 @@ export class UserRepository implements IUserRepository {
 
   save(user: User): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      const _transaction = await User.sequelize.transaction();
-      User.create(user, { transaction: _transaction })
+      User.create(user,)
         .then(async result => {
-          await _transaction.commit();
           resolve(result);
         }).catch(async error => {
-          await _transaction.rollback();
           reject(error);
         });
     });
   }
 
   update(user: User): Promise<any> {
-    throw new Error('Method not implemented.');
+    return new Promise(async (resolve, reject) => {
+      User.update(user.ToModify(),
+        {
+          where:
+          {
+            id: user.id
+          },
+        })
+        .then(result => {
+          resolve(result);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   }
   delete(_id: number): Promise<any> {
     throw new Error('Method not implemented.');

@@ -1,4 +1,5 @@
 import { Model } from "sequelize/types";
+import Attributes from "../attributes";
 
 export default class LifeProject extends Model {
     id!: number;
@@ -9,32 +10,15 @@ export default class LifeProject extends Model {
     detailTargets: string[];
     actionPlan: string[];
 
-    constructor() {
+    constructor(json?: any) {
         super();
-    }
-
-    setWishes(wishes) {
-        this.wishes = wishes;
-    }
-
-    setPersonalTraits(personalTraits) {
-        this.personalTraits = personalTraits;
-    }
-
-    setChecklistDay(checklistDay) {
-        this.checklistDay = checklistDay;
-    }
-
-    setBio(bio) {
-        this.bio = bio;
-    }
-
-    setDetailTargets(detailTargets) {
-        this.detailTargets = detailTargets;
-    }
-
-    setActionPlan(actionPlan) {
-        this.actionPlan = actionPlan;
+        this.id = Attributes.ReturnIfValid(json.id);
+        this.wishes = Attributes.ReturnIfValid(json.wishes);
+        this.personalTraits = Attributes.ReturnIfValid(json.personalTraits);
+        this.checklistDay = Attributes.ReturnIfValid(json.checklistDay);
+        this.bio = Attributes.ReturnIfValid(json.bio);
+        this.detailTargets = Attributes.ReturnIfValid(json.detailTargets);
+        this.actionPlan = Attributes.ReturnIfValid(json.actionPlan);
     }
 
     ToModify() {

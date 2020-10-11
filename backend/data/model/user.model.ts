@@ -1,49 +1,25 @@
-import { Model } from "sequelize/types";
+import { Model, DataTypes } from "sequelize/types";
+import Attributes from "../attributes";
+import { Sequelize } from 'sequelize';
+
+let _instance: Sequelize;
 
 export default class User extends Model {
+
     id!: number;
     name: string;
     userName: string;
-<<<<<<< HEAD
     email: string;
-    wishes: string[];
-    personalTraits: string[]; //qualidades,defeitos,qualidade que gostaria de ter
-    checklistDay: string;
-    bio: string;
-    img: any[];
-=======
->>>>>>> cf7dc232384244cd1afbad04084cb364f4157bdb
 
-    constructor() {
+    constructor(json?: any) {
         super();
+        this.id = Attributes.ReturnIfValid(json.id);
+        this.name = Attributes.ReturnIfValid(json.name);
+        this.userName = Attributes.ReturnIfValid(json.userName);
+        this.email = Attributes.ReturnIfValid(json.email);
     }
 
-    setName(name) {
-        this.name = name;
-    }
-
-    setUserName(userName) {
-        this.userName = userName;
-    }
-
-<<<<<<< HEAD
-    setEmail(email) {
-        this.email = email;
-    }
-
-    setWishes(wishes) {
-        this.wishes = wishes;
-    }
-
-    setBio(bio) {
-        this.bio = bio;
-    }
-
-    setImg(img) {
-        this.img = img;
-=======
-    ToModify() {
+    ToModify(): any {
         return this.toJSON();
->>>>>>> cf7dc232384244cd1afbad04084cb364f4157bdb
     }
 }

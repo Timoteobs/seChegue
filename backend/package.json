@@ -4,23 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "json-server --watch db.json --port 3001"
+    "start": "json-server --watch db.json --routes routes.json --port 3001",
+    "tsc": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.8",
     "@types/express-serve-static-core": "^4.17.13",
     "debug": "^4.2.0",
     "express": "^4.17.1",
     "inversify": "^5.0.1",
     "inversify-express-utils": "^6.3.2",
-    "json-server": "^0.16.2",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.3.5",
-    "serve-static": "^1.14.1"
+    "serve-static": "^1.14.1",
+    "typescript": "^4.0.3"
   },
   "devDependencies": {
+    "json-server": "^0.16.2",
     "nodemon": "^2.0.4"
   }
 }
