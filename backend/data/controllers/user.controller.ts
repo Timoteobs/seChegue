@@ -10,8 +10,9 @@ class UserController {
 
   constructor(@inject(TYPES.IUserService) private service: IUserService) { }
 
-  @httpPost('/user')
+  @httpPost('/users')
   post(@request() req: express.Request<any>, @response() res: express.Response<any>): Promise<any> {
+    console.log("aqui")
     return new Promise((resolve) => {
       this.service.save(new User(req.body))
         .then((result: any) => resolve(result))
@@ -19,7 +20,7 @@ class UserController {
     });
   }
 
-  @httpGet('/user/email/:email')
+  @httpGet('/users/email/:email')
   getByEmail(@request() req: express.Request<any>, @response() res: express.Response<any>) {
     return new Promise((resolve) => {
       this.service.getByEmail(req.params.email)
@@ -28,8 +29,9 @@ class UserController {
     });
   }
 
-  @httpGet('/user/name/:name')
+  @httpGet('/users/name/:name')
   getByName(@request() req: express.Request<any>, @response() res: express.Response<any>): Promise<any> {
+    console.log(req)
     return new Promise((resolve) => {
       this.service.getByName(req.params.name)
         .then(result => resolve(result))

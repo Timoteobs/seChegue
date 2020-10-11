@@ -6,6 +6,7 @@ import { injectable } from "inversify";
 export class UserRepository implements IUserRepository {
 
   getByName(name: string): Promise<User[]> {
+    console.log(name)
     return new Promise((resolve, reject) => {
       User.findAll({
         where: {
