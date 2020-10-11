@@ -19,6 +19,24 @@ class UserController {
     });
   }
 
+  @httpGet('/user/email/:email')
+  getByEmail(@request() req: express.Request<any>, @response() res: express.Response<any>) {
+    return new Promise((resolve) => {
+      this.service.getByEmail(req.params.email)
+        .then(result => resolve(result))
+        .catch((error: any) => resolve(error));
+    });
+  }
+
+  @httpGet('/user/name/:name')
+  getByName(@request() req: express.Request<any>, @response() res: express.Response<any>): Promise<any> {
+    return new Promise((resolve) => {
+      this.service.getByName(req.params.name)
+        .then(result => resolve(result))
+        .catch((error: any) => resolve(error));
+    });
+  }
+
 }
 
 export default UserController;
