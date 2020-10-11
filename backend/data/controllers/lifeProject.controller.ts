@@ -7,7 +7,7 @@ import TYPES from "../types";
 @controller('')
 class LifProjectController {
 
-  constructor(@inject(TYPES.ILifeProjectService) private service: ILifeProjectService) { }
+  constructor(@inject(TYPES.IlifeProjectService) private service: ILifeProjectService) { }
 
   @httpPost('/lifeProject')
   post(@request() req: Request<any>, @response() res: Response<any>): Promise<any> {
