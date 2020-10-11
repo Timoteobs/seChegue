@@ -29,12 +29,14 @@ export class RoomsRepository implements IRoomsRepository {
       Rooms.findOne({
         where: {
           email: {
-            [Op.eq]: _email
+            [Op.eq]: `${_email}%`
           }
         }
-      }).then((result: Rooms) => {
+      })
+      .then(result => {
         resolve(result);
-      }).catch(error => {
+      })
+      .catch(error => {
         reject(error);
       });
     });
