@@ -5,12 +5,12 @@ import LifeProject from "../model/lifeProject.model";;
 import TYPES from "../types";
 
 @controller('')
-class LifProjectController {
+class LifeProjectController {
 
-  constructor(@inject(TYPES.IlifeProjectService) private service: ILifeProjectService) { }
+  constructor(@inject(TYPES.ILifeProjectService) private service: ILifeProjectService) { }
 
   @httpPost('/lifeProject')
-  post(@request() req: Request<any>, @response() res: Response<any>): Promise<any> {
+  post(@request() req: express.Response<any>, @response() res: express.Response<any>): Promise<any> {
     return new Promise((resolve) => {
       this.service.save(new LifeProject(req.body))
         .then((result: any) => resolve(result))
@@ -19,5 +19,4 @@ class LifProjectController {
   }
 
 }
-
-export default UserController;
+export default LifeProjectController;
