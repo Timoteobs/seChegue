@@ -1,14 +1,18 @@
-export default class ConnectionList {
+import { Model } from "sequelize/types";
+import Attributes from "../attributes";
+
+export default class ConnectionList extends Model {
+
     connection: string[];
     disconnect: string[];
-    
 
-    constructor() {}
-    setConnection(connection) {
-        this.connection = connection;
+    constructor(json?: any) {
+        super();
+        this.connection = Attributes.ReturnIfValid(json.connection);
+        this.disconnect = Attributes.ReturnIfValid(json.disconnect);
     }
 
-    setDisconnect(disconnect) {
-        this.disconnect = disconnect;
+    ToModify(): any {
+        return this.toJSON();
     }
 }

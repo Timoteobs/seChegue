@@ -1,27 +1,25 @@
-import { Model } from "sequelize/types";
+import { Model, DataTypes } from "sequelize/types";
+import Attributes from "../attributes";
+import { Sequelize } from 'sequelize';
+
+let _instance: Sequelize;
 
 export default class User extends Model {
-    ToModify(): any {
-      throw new Error("Method not implemented.");
-    }
+
     id!: number;
     name: string;
     userName: string;
     email: string;
 
-    constructor() {
+    constructor(json?: any) {
         super();
+        this.id = Attributes.ReturnIfValid(json.id);
+        this.name = Attributes.ReturnIfValid(json.name);
+        this.userName = Attributes.ReturnIfValid(json.userName);
+        this.email = Attributes.ReturnIfValid(json.email);
     }
 
-    setName(name) {
-        this.name = name;
-    }
-
-    setUserName(userName) {
-        this.userName = userName;
-    }
-
-    setEmail(email) {
-        this.email = email;
+    ToModify(): any {
+        return this.toJSON();
     }
 }

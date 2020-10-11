@@ -1,41 +1,37 @@
-import { Op } from "sequelize/types";
+import { Model, Op } from "sequelize/types";
+import Attributes from "../attributes";
 
-export default class Rooms {
-    static create(rooms: typeof Rooms, arg1: { transaction: any; }) {
-      throw new Error('Method not implemented.');
-    }
-    static findOne(arg0: { where: { email: { [Op.eq]: string; }; }; }) {
-      throw new Error('Method not implemented.');
-    }
-    static findAll(arg0: { where: { name: { [Op.like]: string; }; }; }) {
-      throw new Error('Method not implemented.');
-    }
-    id!: number;
-    name: string;
-    type: string[];
-    members:string[];
-    publications: string[];
-    comments: string[];
+export default class Rooms extends Model {
 
+  id!: number;
+  name: string;
+  type: string[];
+  members: string[];
+  publications: string[];
+  comments: string[];
 
-    constructor() {}
-    setName(name) {
-        this.name = name;
-    }
+  constructor(json?: any) {
+    super();
+    this.id = Attributes.ReturnIfValid(json.id);
+    this.name = Attributes.ReturnIfValid(json.name);
+    this.type = Attributes.ReturnIfValid(json.type);
+    this.members = Attributes.ReturnIfValid(json.members);
+    this.publications = Attributes.ReturnIfValid(json.publications);
+    this.comments = Attributes.ReturnIfValid(json.comments);
+  }
 
-    setType(type) {
-        this.type = type;
-    }
+  ToModify() {
+    return this.toJSON();
+  }
 
-    setMembers(members) {
-        this.members = members;
-    }
+  static create(rooms: typeof Rooms, arg1: { transaction: any; }) {
+    throw new Error('Method not implemented.');
+  }
+  static findOne(arg0: { where: { email: { [Op.eq]: string; }; }; }) {
+    throw new Error('Method not implemented.');
+  }
+  static findAll(arg0: { where: { name: { [Op.like]: string; }; }; }) {
+    throw new Error('Method not implemented.');
+  }
 
-    setPublications(publications) {
-        this.publications = publications;
-    }
-
-    setComments(comments) {
-        this.comments = comments;
-    }
 }
