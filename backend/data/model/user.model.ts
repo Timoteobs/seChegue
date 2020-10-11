@@ -8,11 +8,6 @@ export default class User extends Model {
     name: string;
     userName: string;
     email: string;
-    wishes: string[];
-    personalTraits: string[]; //qualidades,defeitos,qualidade que gostaria de ter
-    checklistDay: string;
-    bio: string;
-    img: any[];
 
     constructor() {
         super();
@@ -28,17 +23,5 @@ export default class User extends Model {
 
     setEmail(email) {
         this.email = email;
-    }
-
-    setWishes(wishes) {
-        this.wishes = wishes;
-    }
-
-    setBio(bio) {
-        this.bio = bio;
-    }
-
-    setImg(img) {
-        this.img = img;
     }
 }
