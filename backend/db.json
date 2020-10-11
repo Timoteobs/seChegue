@@ -41,6 +41,13 @@
       "name": "Gustavo",
       "Idade": "25",
       "id": 3
+    },
+    {
+      "user": {
+        "name": "Micaelle Marilia",
+        "userName": "Mica"
+      },
+      "id": 4
     }
   ],
   "rooms": [
