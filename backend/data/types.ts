@@ -1,14 +1,15 @@
 const TYPES = {
   // Services Types
   IUserService: Symbol('IUserService'),
-  IlifeProjectService: Symbol('ILifeProject'),
-  IroomsService: Symbol('IUserService'),
+  ILifeProjectService: Symbol('ILifeProjectService'),
+  IRoomsService: Symbol('IRoomsService'),
+  IConnectionListService: Symbol('IConnectionListService'),
 
   // Repositories Types
   IUserRepository: Symbol('IUserRepository'),
-  IlifeProjectRepository: Symbol('IlifeProjectRepository'),
-  IroomsRepository: Symbol('IroomsRepository'),
-  IconnectionListRepository: Symbol('IconnectionListRepository'),
+  ILifeProjectRepository: Symbol('ILifeProjectRepository'),
+  IRoomsRepository: Symbol('IRoomsRepository'),
+  IConnectionListRepository: Symbol('IConnectionListRepository'),
 };
 
 export default TYPES;
