@@ -60,7 +60,21 @@ export class UserRepository implements IUserRepository {
   }
 
   update(user: User): Promise<any> {
-    throw new Error('Method not implemented.');
+    return new Promise(async (resolve, reject) => {
+      User.update(user.ToModify(),
+        {
+          where:
+          {
+            id: user.id
+          },
+        })
+        .then(result => {
+          resolve(result);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   }
   delete(_id: number): Promise<any> {
     throw new Error('Method not implemented.');

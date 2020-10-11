@@ -14,34 +14,48 @@ export class LifeProjectService implements ILifeProjectService {
     @inject(TYPES.ILifeProjectRepository) private repository: ILifeProjectRepository
   ) {}
 
-  getById(_id: number): Promise<LifeProject> {
-    throw new Error("Method not implemented.");
+  getById(id: number): Promise<LifeProject> {
+    return new Promise((resolve, reject) => {
+      this.repository.getById(id)
+        .then((result: LifeProject) => resolve(result))
+        .catch(async (error: any) =>
+          reject((error)));
+    });
   }
   toList(): Promise<LifeProject[]> {
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, reject) => {
+      this.repository.toList()
+        .then((result: any) => resolve(result))
+        .catch(async (error: any) =>
+          reject((error)));
+    });
   }
 
   save(lifeProject: LifeProject): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.repository.getByName(lifeProject.wishes)
-        .then(async (found: LifeProject) => {
-          if (!Attributes.IsValid(found)) {
-            this.repository.save(lifeProject)
-              .then(result => resolve(result))
-              .catch(async (error: any) =>
-                reject(error));
-          } else {
-            reject(undefined);
-          }
-        });
+      this.repository.save(lifeProject)
+        .then(async (result: any) => resolve(result))
+        .catch(async (error: any) =>
+          reject(error));
     });
   }
 
   update(lifeProject: LifeProject): Promise<any> {
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, reject) => {
+      this.repository.update(lifeProject)
+        .then(result => resolve(result))
+        .catch(async (error: any) =>
+          reject(error))
+    })
   }
-  delete(_id: number): Promise<any> {
-    throw new Error("Method not implemented.");
+  
+  delete(id: number): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.repository.delete(id)
+        .then((result: any) => resolve(result))
+        .catch(async (error: any) =>
+          reject((error)));
+    });
   }
 
   getByName(name: string): Promise<LifeProject[]> {

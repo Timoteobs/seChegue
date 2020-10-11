@@ -23,25 +23,6 @@ export class LifeProjectRepository implements ILifeProjectRepository {
       });
     });
   }
- 
-  getByEmail(_email: string): Promise<LifeProject> {
-    return new Promise((resolve, reject) => {
-      LifeProject.findOne({
-        where: {
-          email: {
-            [Op.eq]: `${_email}%`
-          }
-        }
-      })
-      .then(result => {
-        resolve(result);
-      })
-      .catch(error => {
-        reject(error);
-      });
-    });
-  }
-
   getById(_id: number): Promise<LifeProject> {
     throw new Error('Method not implemented.');
   }
@@ -51,20 +32,31 @@ export class LifeProjectRepository implements ILifeProjectRepository {
 
   save(lifeProject: LifeProject): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      const _transaction = await LifeProject.sequelize.transaction();
-      LifeProject.create(LifeProject, { transaction: _transaction })
-        .then(async result => {
-          await _transaction.commit();
+      LifeProject.create(lifeProject,)
+        .then((result: LifeProject) => {
           resolve(result);
         }).catch(async error => {
-          await _transaction.rollback();
           reject(error);
         });
     });
   }
 
   update(lifeProject: LifeProject): Promise<any> {
-    throw new Error('Method not implemented.');
+    return new Promise(async (resolve, reject) => {
+      LifeProject.update(lifeProject.ToModify(),
+        {
+          where:
+          {
+            id: lifeProject.id
+          },
+        })
+        .then(result => {
+          resolve(result);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   }
   delete(_id: number): Promise<any> {
     throw new Error('Method not implemented.');

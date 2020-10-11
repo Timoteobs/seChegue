@@ -19,6 +19,25 @@ class RoomsController {
     });
   }
 
+  @httpPut('/rooms')
+  put(@request() req: express.Request<any>, @response() res: express.Response<any>): Promise<any> {
+    return new Promise((resolve) => {
+      this.service.update(new Rooms(req.body))
+        .then(result => resolve(result))
+        .catch((error: any) => resolve(error));
+    });
+  }
+
+  @httpGet('/rooms/name/:name')
+  getByName(@request() req: Request, @response() res: Response) {
+    return new Promise((resolve) => {
+      this.service.getByName(String(req.body))
+        .then((result: Rooms[]) => resolve(result))
+        .catch((error: any) => resolve(error));
+    });
+  }
+
+
 }
 
 export default RoomsController;
